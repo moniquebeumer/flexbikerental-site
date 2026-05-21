@@ -27,7 +27,7 @@ export const translations = {
     location: {
       title: 'Ophalen in Weert',
       sub: 'Onze fietsen staan klaar op onze locatie in Weert. Je kunt ze daar ophalen op werkdagen.',
-      address: 'Weert, Nederland',
+      address: 'Dr. Schaepmanstraat 45B, Weert',
       hours: 'Ma – Vr: 08:00 – 17:00',
       note: 'Na aanmelding ontvang je het exacte adres per e-mail.',
     },

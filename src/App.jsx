@@ -115,7 +115,7 @@ export default function App() {
             <div style={styles.mapPlaceholder}>
               <iframe
                 title="Weert locatie"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d79837.33!2d5.6498!3d51.2498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c0b8c17a08f2b1%3A0x9f5c8a8b2b5e4d5c!2sWeert!5e0!3m2!1snl!2snl!4v1"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2487.5!2d5.7089!3d51.2521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zRHIuIFNjaGFlcG1hbnN0cmFhdCA0NUIsIFdlZXJ0!5e0!3m2!1snl!2snl!4v1"
                 width="100%"
                 height="260"
                 style={{ border: 0, borderRadius: 12 }}
