@@ -31,7 +31,7 @@ export default function RentalsPage() {
     setLoading(true)
     const { data } = await supabase
       .from('rentals')
-      .select('id, period_type, status, start_date, end_date, price_total, created_at, profiles(full_name, email), bikes(name, frame_number)')
+      .select('id, period_type, status, start_date, end_date, price_total, created_at, rental_profiles(full_name, email), frame_numbers(frame_number)')
       .order('created_at', { ascending: false })
     setRentals(data ?? [])
     setLoading(false)
@@ -39,9 +39,9 @@ export default function RentalsPage() {
 
   async function openNewRental() {
     const [{ data: c }, { data: b }, { data: p }] = await Promise.all([
-      supabase.from('profiles').select('id, full_name, email').order('full_name'),
-      supabase.from('bikes').select('id, name, frame_number, status').eq('in_archief', false).eq('status', 'available').order('name'),
-      supabase.from('pricing').select('*').order('period_type'),
+      supabase.from('rental_profiles').select('id, full_name, email').order('full_name'),
+      supabase.from('frame_numbers').select('id, frame_number, status').eq('is_rental_bike', true).eq('in_archief', false).eq('status', 'in_warehouse').order('name'),
+      supabase.from('rental_pricing').select('*').order('period_type'),
     ])
     setCustomers(c ?? [])
     setBikes(b ?? [])
@@ -56,7 +56,7 @@ export default function RentalsPage() {
     const priceRow = pricing.find(p => p.period_type === form.period_type)
     const { data, error } = await supabase.from('rentals').insert({
       renter_id: form.renter_id,
-      bike_id: form.bike_id || null,
+      frame_number_id: form.bike_id || null,
       period_type: form.period_type,
       start_date: form.start_date ? new Date(form.start_date).toISOString() : null,
       status: 'pending_pickup',
@@ -64,7 +64,7 @@ export default function RentalsPage() {
     }).select().single()
     if (error) { setFormError(error.message); setSaving(false); return }
     if (form.bike_id) {
-      await supabase.from('bikes').update({ status: 'rented' }).eq('id', form.bike_id)
+      await supabase.from('frame_numbers').update({ status: 'at_the_customer' }).eq('id', form.bike_id)
     }
     setSaving(false)
     setShowForm(false)
@@ -156,8 +156,8 @@ export default function RentalsPage() {
           </div>
           {filtered.map(r => (
             <div key={r.id} style={styles.tableRow} onClick={() => navigate(`/rentals/${r.id}`)}>
-              <span>{r.profiles?.full_name ?? r.profiles?.email ?? '—'}</span>
-              <span>{r.bikes?.name ?? '—'}{r.bikes?.frame_number ? <span style={{ display: 'block', fontSize: 11, color: '#9ca3af', fontFamily: 'monospace' }}>{r.bikes.frame_number}</span> : null}</span>
+              <span>{r.rental_profiles?.full_name ?? r.rental_profiles?.email ?? '—'}</span>
+              <span>{r.frame_numbers?.frame_number ?? '—'}{false ? <span style={{ display: 'block', fontSize: 11, color: '#9ca3af', fontFamily: 'monospace' }}>{r.bikes.frame_number}</span> : null}</span>
               <span>{PERIOD_LABEL[r.period_type] ?? r.period_type}</span>
               <span>{r.start_date ? new Date(r.start_date).toLocaleDateString() : '—'}</span>
               <span>€ {(r.price_total ?? 0).toFixed(2)}</span>

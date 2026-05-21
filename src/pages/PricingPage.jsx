@@ -13,14 +13,14 @@ export default function PricingPage() {
 
   async function loadPricing() {
     setLoading(true)
-    const { data } = await supabase.from('pricing').select('*').order('period_type')
+    const { data } = await supabase.from('rental_pricing').select('*').order('period_type')
     setPricing(data ?? [])
     setLoading(false)
   }
 
   async function handleSave(item) {
     setSaving(item.id)
-    await supabase.from('pricing').update({ price: item.price }).eq('id', item.id)
+    await supabase.from('rental_pricing').update({ price: item.price }).eq('id', item.id)
     setSaving(null)
     setSuccess(true)
     setTimeout(() => setSuccess(false), 2000)

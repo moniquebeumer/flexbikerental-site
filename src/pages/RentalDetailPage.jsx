@@ -33,21 +33,22 @@ export default function RentalDetailPage() {
     setLoading(true)
     const { data } = await supabase
       .from('rentals')
-      .select('*, profiles(full_name, email, phone, veriff_status), bikes(id, name, bike_type, location, frame_number)')
+      .select('*, rental_profiles(full_name, email, phone, veriff_status), frame_numbers(id, frame_number, frame_type, status)')
       .eq('id', id)
       .single()
     setRental(data)
-    setSelectedBikeId(data?.bike_id ?? '')
+    setSelectedBikeId(data?.frame_number_id ?? '')
     setLoading(false)
   }
 
   async function loadAvailableBikes() {
     const { data } = await supabase
       .from('bikes')
-      .select('id, name, frame_number')
+      .select('id, frame_number')
+      .eq('is_rental_bike', true)
       .eq('in_archief', false)
-      .eq('status', 'available')
-      .order('name')
+      .eq('status', 'in_warehouse')
+      .order('frame_number')
     setAvailableBikes(data ?? [])
   }
 
@@ -61,14 +62,14 @@ export default function RentalDetailPage() {
   async function confirmPickup() {
     setSaving(true)
     const updates = { status: 'active' }
-    if (selectedBikeId && selectedBikeId !== rental.bike_id) {
-      updates.bike_id = selectedBikeId
-      if (rental.bike_id) {
-        await supabase.from('bikes').update({ status: 'available' }).eq('id', rental.bike_id)
+    if (selectedBikeId && selectedBikeId !== rental.frame_number_id) {
+      updates.frame_number_id = selectedBikeId
+      if (rental.frame_number_id) {
+        await supabase.from('frame_numbers').update({ status: 'in_warehouse' }).eq('id', rental.frame_number_id)
       }
-      await supabase.from('bikes').update({ status: 'rented' }).eq('id', selectedBikeId)
-    } else if (rental.bike_id) {
-      await supabase.from('bikes').update({ status: 'rented' }).eq('id', rental.bike_id)
+      await supabase.from('frame_numbers').update({ status: 'at_the_customer' }).eq('id', selectedBikeId)
+    } else if (rental.frame_number_id) {
+      await supabase.from('frame_numbers').update({ status: 'at_the_customer' }).eq('id', rental.frame_number_id)
     }
     await supabase.from('rentals').update(updates).eq('id', id)
     await loadRental()
@@ -78,8 +79,8 @@ export default function RentalDetailPage() {
   async function completeRental() {
     setSaving(true)
     await supabase.from('rentals').update({ status: 'completed', end_date: new Date().toISOString() }).eq('id', id)
-    if (rental.bike_id) {
-      await supabase.from('bikes').update({ status: 'available' }).eq('id', rental.bike_id)
+    if (rental.frame_number_id) {
+      await supabase.from('frame_numbers').update({ status: 'in_warehouse' }).eq('id', rental.frame_number_id)
     }
     await loadRental()
     setSaving(false)
@@ -115,7 +116,7 @@ export default function RentalDetailPage() {
             </button>
           )}
           {rental.status === 'pending_pickup' && (
-            <button style={styles.actionBtn} onClick={confirmPickup} disabled={saving || (!selectedBikeId && !rental.bike_id)}>
+            <button style={styles.actionBtn} onClick={confirmPickup} disabled={saving || (!selectedBikeId && !rental.frame_number_id)}>
               ✓ {t('confirmPickup')}
             </button>
           )}
@@ -135,12 +136,12 @@ export default function RentalDetailPage() {
       <div style={styles.grid2}>
         <div style={styles.card}>
           <h2 style={styles.sectionTitle}>{t('renter')}</h2>
-          <InfoRow label="Naam" value={rental.profiles?.full_name} />
-          <InfoRow label={t('email')} value={rental.profiles?.email} />
-          <InfoRow label="Telefoon" value={rental.profiles?.phone} />
+          <InfoRow label="Naam" value={rental.rental_profiles?.full_name} />
+          <InfoRow label={t('email')} value={rental.rental_profiles?.email} />
+          <InfoRow label="Telefoon" value={rental.rental_profiles?.phone} />
           <InfoRow label={t('veriffStatus')} value={
-            <span style={{ ...styles.badge, ...VERIFF_COLORS[rental.profiles?.veriff_status] }}>
-              {t(rental.profiles?.veriff_status ?? 'pending')}
+            <span style={{ ...styles.badge, ...VERIFF_COLORS[rental.rental_profiles?.veriff_status] }}>
+              {t(rental.rental_profiles?.veriff_status ?? 'pending')}
             </span>
           } />
         </div>
@@ -158,21 +159,20 @@ export default function RentalDetailPage() {
                   onChange={e => setSelectedBikeId(e.target.value)}
                 >
                   <option value="">{t('selectBike')}</option>
-                  {rental.bike_id && rental.bikes && (
-                    <option value={rental.bike_id}>{rental.bikes.name}{rental.bikes.frame_number ? ` — ${rental.bikes.frame_number}` : ''} (huidig)</option>
+                  {rental.frame_number_id && rental.frame_numbers && (
+                    <option value={rental.frame_number_id}>{rental.frame_numbers.frame_number} (huidig)</option>
                   )}
-                  {availableBikes.filter(b => b.id !== rental.bike_id).map(b => (
-                    <option key={b.id} value={b.id}>{b.name}{b.frame_number ? ` — ${b.frame_number}` : ''}</option>
+                  {availableBikes.filter(b => b.id !== rental.frame_number_id).map(b => (
+                    <option key={b.id} value={b.id}>{b.frame_number}</option>
                   ))}
                 </select>
               </div>
             </>
           ) : (
             <>
-              <InfoRow label="Naam" value={rental.bikes?.name} />
-              <InfoRow label={t('frameNumber')} value={rental.bikes?.frame_number} />
-              <InfoRow label={t('bikeType')} value={rental.bikes?.bike_type} />
-              <InfoRow label={t('location')} value={rental.bikes?.location} />
+              <InfoRow label={t('frameNumber')} value={<span style={{ fontFamily: 'monospace' }}>{rental.frame_numbers?.frame_number}</span>} />
+              <InfoRow label={t('bikeType')} value={rental.frame_numbers?.frame_type} />
+              <InfoRow label={t('location')} value="Weert" />
             </>
           )}
         </div>

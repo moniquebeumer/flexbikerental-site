@@ -4,10 +4,11 @@ import { supabase } from '../services/supabase'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const STATUS_COLORS = {
-  available:   { bg: '#dcfce7', color: '#15803d' },
-  rented:      { bg: '#dbeafe', color: '#1d4ed8' },
-  maintenance: { bg: '#fef9c3', color: '#854d0e' },
+  in_warehouse:    { bg: '#dcfce7', color: '#15803d' },
+  at_the_customer: { bg: '#dbeafe', color: '#1d4ed8' },
+  in_repair:       { bg: '#fef9c3', color: '#854d0e' },
 }
+const STATUS_LABELS = { in_warehouse: 'Beschikbaar', at_the_customer: 'Verhuurd', in_repair: 'Onderhoud' }
 
 export default function BikesPage() {
   const { t } = useLanguage()
@@ -15,7 +16,7 @@ export default function BikesPage() {
   const [bikes, setBikes] = useState([])
   const [loading, setLoading] = useState(true)
   const [showForm, setShowForm] = useState(false)
-  const [form, setForm] = useState({ name: '', frame_number: '', description: '', bike_type: 'city', status: 'available', location: 'Weert' })
+  const [form, setForm] = useState({ frame_number: '', extra_info: '', frame_type: 'other', notes: '' })
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState(null)
 
@@ -23,7 +24,12 @@ export default function BikesPage() {
 
   async function loadBikes() {
     setLoading(true)
-    const { data } = await supabase.from('bikes').select('*').eq('in_archief', false).order('name')
+    const { data } = await supabase
+      .from('frame_numbers')
+      .select('id, frame_number, frame_type, status, extra_info, notes, in_archief')
+      .eq('is_rental_bike', true)
+      .eq('in_archief', false)
+      .order('frame_number')
     setBikes(data ?? [])
     setLoading(false)
   }
@@ -32,11 +38,15 @@ export default function BikesPage() {
     e.preventDefault()
     setSaving(true)
     setError(null)
-    const { data, error: err } = await supabase.from('bikes').insert(form).select().single()
+    const { data, error: err } = await supabase
+      .from('frame_numbers')
+      .insert({ ...form, is_rental_bike: true, status: 'in_warehouse' })
+      .select()
+      .single()
     if (err) { setError(err.message); setSaving(false); return }
     setSaving(false)
     setShowForm(false)
-    setForm({ name: '', frame_number: '', description: '', bike_type: 'city', status: 'available', location: 'Weert' })
+    setForm({ frame_number: '', extra_info: '', frame_type: 'other', notes: '' })
     navigate(`/bikes/${data.id}`)
   }
 
@@ -52,31 +62,21 @@ export default function BikesPage() {
           <h2 style={styles.formTitle}>{t('newBike')}</h2>
           <form onSubmit={handleSave} style={styles.form}>
             <div style={styles.grid2}>
-              <Field label={t('name')}>
-                <input style={styles.input} value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required autoFocus />
-              </Field>
               <Field label={t('frameNumber')}>
-                <input style={styles.input} value={form.frame_number} onChange={e => setForm(f => ({ ...f, frame_number: e.target.value }))} />
+                <input style={styles.input} value={form.frame_number} onChange={e => setForm(f => ({ ...f, frame_number: e.target.value }))} required autoFocus />
               </Field>
               <Field label={t('bikeType')}>
-                <select style={styles.input} value={form.bike_type} onChange={e => setForm(f => ({ ...f, bike_type: e.target.value }))}>
-                  <option value="city">City</option>
-                  <option value="electric">Elektrisch</option>
-                  <option value="cargo">Cargo</option>
-                </select>
-              </Field>
-              <Field label={t('location')}>
-                <input style={styles.input} value={form.location} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} />
-              </Field>
-              <Field label={t('status')}>
-                <select style={styles.input} value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
-                  <option value="available">{t('available')}</option>
-                  <option value="maintenance">{t('maintenance')}</option>
+                <select style={styles.input} value={form.frame_type} onChange={e => setForm(f => ({ ...f, frame_type: e.target.value }))}>
+                  <option value="gen2plus">Gen2+</option>
+                  <option value="gen3">Gen3</option>
+                  <option value="giant">Giant</option>
+                  <option value="popal">Popal</option>
+                  <option value="other">Overig</option>
                 </select>
               </Field>
             </div>
             <Field label={t('description')}>
-              <textarea style={{ ...styles.input, minHeight: 80, resize: 'vertical' }} value={form.description} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} />
+              <textarea style={{ ...styles.input, minHeight: 70, resize: 'vertical' }} value={form.extra_info} onChange={e => setForm(f => ({ ...f, extra_info: e.target.value }))} />
             </Field>
             {error && <p style={styles.error}>{error}</p>}
             <div style={styles.btnRow}>
@@ -95,14 +95,13 @@ export default function BikesPage() {
         <div style={styles.grid}>
           {bikes.map(bike => (
             <div key={bike.id} style={styles.card} onClick={() => navigate(`/bikes/${bike.id}`)}>
-              {bike.image_url && <img src={bike.image_url} alt={bike.name} style={styles.cardImg} />}
-              {!bike.image_url && <div style={styles.cardImgPlaceholder}>🚲</div>}
+              <div style={styles.cardImgPlaceholder}>🚲</div>
               <div style={styles.cardBody}>
-                <div style={styles.cardName}>{bike.name}</div>
-                <div style={styles.cardMeta}>{bike.bike_type} · {bike.location}</div>
-                {bike.frame_number && <div style={{ fontSize: 12, color: '#6b7280', fontFamily: 'monospace' }}>{bike.frame_number}</div>}
-                <span style={{ ...styles.badge, ...STATUS_COLORS[bike.status] }}>
-                  {t(bike.status)}
+                <div style={styles.cardName}>{bike.frame_number}</div>
+                <div style={styles.cardMeta}>{bike.frame_type} · Weert</div>
+                {bike.extra_info && <div style={{ fontSize: 12, color: '#6b7280', marginTop: 2 }}>{bike.extra_info}</div>}
+                <span style={{ ...styles.badge, ...(STATUS_COLORS[bike.status] ?? {}) }}>
+                  {STATUS_LABELS[bike.status] ?? bike.status}
                 </span>
               </div>
             </div>
@@ -114,12 +113,7 @@ export default function BikesPage() {
 }
 
 function Field({ label, children }) {
-  return (
-    <div>
-      <label style={styles.label}>{label}</label>
-      {children}
-    </div>
-  )
+  return <div><label style={styles.label}>{label}</label>{children}</div>
 }
 
 const styles = {
@@ -139,11 +133,10 @@ const styles = {
   saveBtn: { background: '#268546', color: '#fff', border: 'none', borderRadius: 8, padding: '8px 18px', fontSize: 14, fontWeight: 600, cursor: 'pointer' },
   info: { color: '#9ca3af', fontSize: 14 },
   grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 16 },
-  card: { background: '#fff', borderRadius: 12, border: '1px solid #e5e7eb', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', cursor: 'pointer', overflow: 'hidden', transition: 'box-shadow 0.15s' },
-  cardImg: { width: '100%', height: 140, objectFit: 'cover' },
-  cardImgPlaceholder: { width: '100%', height: 140, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48, background: '#f9fafb' },
+  card: { background: '#fff', borderRadius: 12, border: '1px solid #e5e7eb', boxShadow: '0 1px 4px rgba(0,0,0,0.06)', cursor: 'pointer', overflow: 'hidden' },
+  cardImgPlaceholder: { width: '100%', height: 120, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 48, background: '#f9fafb' },
   cardBody: { padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: 4 },
-  cardName: { fontWeight: 700, fontSize: 15, color: '#111827' },
+  cardName: { fontWeight: 700, fontSize: 15, color: '#111827', fontFamily: 'monospace' },
   cardMeta: { fontSize: 13, color: '#6b7280' },
   badge: { display: 'inline-block', borderRadius: 20, padding: '2px 10px', fontSize: 12, fontWeight: 600, marginTop: 4 },
 }

@@ -16,7 +16,7 @@ export default function DashboardPage() {
 
   async function loadStats() {
     const [{ count: available }, { count: active }, { data: revenue }] = await Promise.all([
-      supabase.from('bikes').select('*', { count: 'exact', head: true }).eq('status', 'available').eq('in_archief', false),
+      supabase.from('frame_numbers').select('*', { count: 'exact', head: true }).eq('is_rental_bike', true).eq('status', 'in_warehouse').eq('in_archief', false),
       supabase.from('rentals').select('*', { count: 'exact', head: true }).eq('status', 'active'),
       supabase.from('rentals').select('price_total').eq('status', 'completed'),
     ])
@@ -27,7 +27,7 @@ export default function DashboardPage() {
   async function loadRecentRentals() {
     const { data } = await supabase
       .from('rentals')
-      .select('id, period_type, status, start_date, price_total, profiles(full_name, email), bikes(name)')
+      .select('id, period_type, status, start_date, price_total, rental_profiles(full_name, email), frame_numbers(frame_number)')
       .order('created_at', { ascending: false })
       .limit(5)
     setRecentRentals(data ?? [])
@@ -72,9 +72,9 @@ export default function DashboardPage() {
             </div>
             {recentRentals.map(r => (
               <div key={r.id} style={styles.tableRow} onClick={() => navigate(`/rentals/${r.id}`)}>
-                <span>{r.profiles?.full_name ?? r.profiles?.email ?? '—'}</span>
-                <span>{r.bikes?.name ?? '—'}</span>
-                <span>{r.period_type === '1_day' ? t('oneDay') : t('oneWeek')}</span>
+                <span>{r.rental_profiles?.full_name ?? r.rental_profiles?.email ?? '—'}</span>
+                <span style={{ fontFamily: 'monospace', fontSize: 13 }}>{r.frame_numbers?.frame_number ?? '—'}</span>
+                <span>{{ '1_day': t('oneDay'), '1_week': t('oneWeek'), 'monthly': t('oneMonth') }[r.period_type] ?? r.period_type}</span>
                 <span>€ {(r.price_total ?? 0).toFixed(2)}</span>
                 <span>
                   <span style={{ ...styles.badge, background: STATUS_COLORS[r.status]?.bg, color: STATUS_COLORS[r.status]?.color }}>

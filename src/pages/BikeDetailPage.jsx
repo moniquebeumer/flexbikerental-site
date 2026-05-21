@@ -4,16 +4,18 @@ import { supabase } from '../services/supabase'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const STATUS_COLORS = {
-  available:   { bg: '#dcfce7', color: '#15803d' },
-  rented:      { bg: '#dbeafe', color: '#1d4ed8' },
-  maintenance: { bg: '#fef9c3', color: '#854d0e' },
+  in_warehouse:    { bg: '#dcfce7', color: '#15803d' },
+  at_the_customer: { bg: '#dbeafe', color: '#1d4ed8' },
+  in_repair:       { bg: '#fef9c3', color: '#854d0e' },
 }
+const STATUS_LABELS = { in_warehouse: 'Beschikbaar', at_the_customer: 'Verhuurd', in_repair: 'Onderhoud' }
 
 const RENTAL_STATUS_COLORS = {
   active:          { bg: '#dcfce7', color: '#15803d' },
   completed:       { bg: '#dbeafe', color: '#1d4ed8' },
   cancelled:       { bg: '#fee2e2', color: '#dc2626' },
   pending_payment: { bg: '#fef9c3', color: '#854d0e' },
+  pending_pickup:  { bg: '#ede9fe', color: '#6d28d9' },
 }
 
 export default function BikeDetailPage() {
@@ -28,14 +30,15 @@ export default function BikeDetailPage() {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState(null)
 
-  useEffect(() => {
-    loadBike()
-    loadRentals()
-  }, [id])
+  useEffect(() => { loadBike(); loadRentals() }, [id])
 
   async function loadBike() {
     setLoading(true)
-    const { data } = await supabase.from('bikes').select('*').eq('id', id).single()
+    const { data } = await supabase
+      .from('frame_numbers')
+      .select('id, frame_number, frame_type, status, extra_info, notes, in_archief')
+      .eq('id', id)
+      .single()
     setBike(data)
     setForm(data ?? {})
     setLoading(false)
@@ -44,8 +47,8 @@ export default function BikeDetailPage() {
   async function loadRentals() {
     const { data } = await supabase
       .from('rentals')
-      .select('id, period_type, status, start_date, end_date, price_total, profiles(full_name, email)')
-      .eq('bike_id', id)
+      .select('id, period_type, status, start_date, end_date, price_total, rental_profiles(full_name, email)')
+      .eq('frame_number_id', id)
       .order('created_at', { ascending: false })
     setRentals(data ?? [])
   }
@@ -54,12 +57,11 @@ export default function BikeDetailPage() {
     e.preventDefault()
     setSaving(true)
     setError(null)
-    const { error: err } = await supabase.from('bikes').update({
-      name: form.name,
-      description: form.description,
-      bike_type: form.bike_type,
+    const { error: err } = await supabase.from('frame_numbers').update({
+      frame_type: form.frame_type,
+      extra_info: form.extra_info,
+      notes: form.notes,
       status: form.status,
-      location: form.location,
     }).eq('id', id)
     if (err) { setError(err.message); setSaving(false); return }
     setSaving(false)
@@ -69,9 +71,11 @@ export default function BikeDetailPage() {
 
   async function handleDelete() {
     if (!confirm(t('confirmDelete'))) return
-    await supabase.from('bikes').update({ in_archief: true }).eq('id', id)
+    await supabase.from('frame_numbers').update({ in_archief: true }).eq('id', id)
     navigate('/bikes')
   }
+
+  const PERIOD_LABEL = { '1_day': t('oneDay'), '1_week': t('oneWeek'), 'monthly': t('oneMonth') }
 
   if (loading) return <div style={styles.page}><p>Laden...</p></div>
   if (!bike) return <div style={styles.page}><p>Fiets niet gevonden.</p></div>
@@ -82,8 +86,10 @@ export default function BikeDetailPage() {
 
       <div style={styles.pageHeader}>
         <div>
-          <h1 style={styles.title}>{bike.name}</h1>
-          <span style={{ ...styles.badge, ...STATUS_COLORS[bike.status] }}>{t(bike.status)}</span>
+          <h1 style={{ ...styles.title, fontFamily: 'monospace' }}>{bike.frame_number}</h1>
+          <span style={{ ...styles.badge, ...(STATUS_COLORS[bike.status] ?? {}) }}>
+            {STATUS_LABELS[bike.status] ?? bike.status}
+          </span>
         </div>
         <div style={styles.btnRow}>
           <button style={styles.editBtn} onClick={() => setEditing(e => !e)}>{editing ? t('cancel') : t('edit')}</button>
@@ -95,29 +101,24 @@ export default function BikeDetailPage() {
         <div style={styles.card}>
           <form onSubmit={handleSave} style={styles.form}>
             <div style={styles.grid2}>
-              <Field label={t('name')}>
-                <input style={styles.input} value={form.name ?? ''} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required />
-              </Field>
               <Field label={t('bikeType')}>
-                <select style={styles.input} value={form.bike_type ?? 'city'} onChange={e => setForm(f => ({ ...f, bike_type: e.target.value }))}>
-                  <option value="city">City</option>
-                  <option value="electric">Elektrisch</option>
-                  <option value="cargo">Cargo</option>
+                <select style={styles.input} value={form.frame_type ?? 'other'} onChange={e => setForm(f => ({ ...f, frame_type: e.target.value }))}>
+                  <option value="gen2plus">Gen2+</option>
+                  <option value="gen3">Gen3</option>
+                  <option value="giant">Giant</option>
+                  <option value="popal">Popal</option>
+                  <option value="other">Overig</option>
                 </select>
               </Field>
-              <Field label={t('location')}>
-                <input style={styles.input} value={form.location ?? ''} onChange={e => setForm(f => ({ ...f, location: e.target.value }))} />
-              </Field>
               <Field label={t('status')}>
-                <select style={styles.input} value={form.status ?? 'available'} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
-                  <option value="available">{t('available')}</option>
-                  <option value="rented">{t('rented')}</option>
-                  <option value="maintenance">{t('maintenance')}</option>
+                <select style={styles.input} value={form.status ?? 'in_warehouse'} onChange={e => setForm(f => ({ ...f, status: e.target.value }))}>
+                  <option value="in_warehouse">Beschikbaar</option>
+                  <option value="in_repair">Onderhoud</option>
                 </select>
               </Field>
             </div>
             <Field label={t('description')}>
-              <textarea style={{ ...styles.input, minHeight: 80, resize: 'vertical' }} value={form.description ?? ''} onChange={e => setForm(f => ({ ...f, description: e.target.value }))} />
+              <textarea style={{ ...styles.input, minHeight: 70, resize: 'vertical' }} value={form.extra_info ?? ''} onChange={e => setForm(f => ({ ...f, extra_info: e.target.value }))} />
             </Field>
             {error && <p style={styles.error}>{error}</p>}
             <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -127,9 +128,11 @@ export default function BikeDetailPage() {
         </div>
       ) : (
         <div style={styles.card}>
-          <InfoRow label={t('bikeType')} value={bike.bike_type} />
-          <InfoRow label={t('location')} value={bike.location} />
-          <InfoRow label={t('description')} value={bike.description} />
+          <InfoRow label={t('frameNumber')} value={<span style={{ fontFamily: 'monospace' }}>{bike.frame_number}</span>} />
+          <InfoRow label={t('bikeType')} value={bike.frame_type} />
+          <InfoRow label={t('location')} value="Weert" />
+          <InfoRow label={t('description')} value={bike.extra_info} />
+          {bike.notes && <InfoRow label="Notities" value={bike.notes} />}
         </div>
       )}
 
@@ -139,11 +142,11 @@ export default function BikeDetailPage() {
           <p style={styles.empty}>{t('noResults')}</p>
         ) : rentals.map(r => (
           <div key={r.id} style={styles.rentalRow} onClick={() => navigate(`/rentals/${r.id}`)}>
-            <span>{r.profiles?.full_name ?? r.profiles?.email ?? '—'}</span>
-            <span>{r.period_type === '1_day' ? t('oneDay') : t('oneWeek')}</span>
+            <span>{r.rental_profiles?.full_name ?? r.rental_profiles?.email ?? '—'}</span>
+            <span>{PERIOD_LABEL[r.period_type] ?? r.period_type}</span>
             <span>{r.start_date ? new Date(r.start_date).toLocaleDateString() : '—'}</span>
             <span>€ {(r.price_total ?? 0).toFixed(2)}</span>
-            <span style={{ ...styles.badge, ...RENTAL_STATUS_COLORS[r.status] }}>{t(r.status) ?? r.status}</span>
+            <span style={{ ...styles.badge, ...(RENTAL_STATUS_COLORS[r.status] ?? {}) }}>{r.status}</span>
           </div>
         ))}
       </div>
@@ -181,7 +184,7 @@ const styles = {
   error: { color: '#dc2626', fontSize: 13 },
   saveBtn: { background: '#268546', color: '#fff', border: 'none', borderRadius: 8, padding: '8px 18px', fontSize: 14, fontWeight: 600, cursor: 'pointer' },
   infoRow: { display: 'flex', gap: 16, padding: '8px 0', borderBottom: '1px solid #f3f4f6' },
-  infoLabel: { fontSize: 13, fontWeight: 600, color: '#6b7280', minWidth: 120 },
+  infoLabel: { fontSize: 13, fontWeight: 600, color: '#6b7280', minWidth: 130 },
   infoValue: { fontSize: 14, color: '#111827' },
   sectionTitle: { fontSize: 16, fontWeight: 700, color: '#111827', marginBottom: 12 },
   rentalRow: { display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', padding: '10px 0', borderBottom: '1px solid #f3f4f6', fontSize: 14, cursor: 'pointer', gap: 8, alignItems: 'center' },
