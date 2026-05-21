@@ -9,6 +9,7 @@ import BikeDetailPage from './pages/BikeDetailPage'
 import RentalsPage from './pages/RentalsPage'
 import RentalDetailPage from './pages/RentalDetailPage'
 import PricingPage from './pages/PricingPage'
+import RentersPage from './pages/RentersPage'
 
 function AppRoutes() {
   const { session, loading } = useAuth()
@@ -26,6 +27,8 @@ function AppRoutes() {
           <Route path="/rentals" element={<RentalsPage />} />
           <Route path="/rentals/:id" element={<RentalDetailPage />} />
           <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/renters" element={<RentersPage />} />
+          <Route path="/renters/:id" element={<RentersPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

@@ -20,6 +20,9 @@ export default function AppHeader() {
           <NavLink to="/rentals" style={({ isActive }) => ({ ...styles.link, ...(isActive ? styles.linkActive : {}) })}>
             {t('rentals')}
           </NavLink>
+          <NavLink to="/renters" style={({ isActive }) => ({ ...styles.link, ...(isActive ? styles.linkActive : {}) })}>
+            Huurders
+          </NavLink>
           <NavLink to="/pricing" style={({ isActive }) => ({ ...styles.link, ...(isActive ? styles.linkActive : {}) })}>
             {t('pricing')}
           </NavLink>
