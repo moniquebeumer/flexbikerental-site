@@ -9,7 +9,7 @@ const LANGS = [
   { code: 'tr', label: 'TR' },
 ]
 
-const REGISTER_URL = '#aanmelden'
+const REGISTER_URL = 'https://app.flexbikerental.nl'
 
 export default function App() {
   const [lang, setLang] = useState('nl')
