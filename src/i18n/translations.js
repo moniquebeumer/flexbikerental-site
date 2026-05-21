@@ -27,7 +27,7 @@ export const translations = {
     location: {
       title: 'Ophalen in Weert',
       sub: 'Onze fietsen staan klaar op onze locatie in Weert. Je kunt ze daar ophalen op werkdagen.',
-      address: 'Dr. Schaepmanstraat 45B, Weert',
+      address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
       hours: 'Ma – Vr: 08:00 – 17:00',
       note: 'Na aanmelding ontvang je het exacte adres per e-mail.',
     },
@@ -75,7 +75,7 @@ export const translations = {
     location: {
       title: 'Pick up in Weert',
       sub: 'Our bikes are ready at our location in Weert. You can pick them up on weekdays.',
-      address: 'Weert, Netherlands',
+      address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
       hours: 'Mon – Fri: 08:00 – 17:00',
       note: 'After registration you will receive the exact address by email.',
     },
@@ -123,7 +123,7 @@ export const translations = {
     location: {
       title: 'Odbiór w Weert',
       sub: 'Nasze rowery czekają na Ciebie w Weert. Możesz je odebrać w dni robocze.',
-      address: 'Weert, Holandia',
+      address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
       hours: 'Pon – Pt: 08:00 – 17:00',
       note: 'Po rejestracji otrzymasz dokładny adres na e-mail.',
     },
@@ -171,7 +171,7 @@ export const translations = {
     location: {
       title: 'Weert\'ten teslim al',
       sub: 'Bisikletlerimiz Weert\'teki konumumuzda hazır bekliyor. Hafta içi her gün teslim alabilirsin.',
-      address: 'Weert, Hollanda',
+      address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
       hours: 'Pzt – Cum: 08:00 – 17:00',
       note: 'Kayıt sonrası tam adresi e-posta ile alacaksın.',
     },
