@@ -25,7 +25,7 @@ export default function App() {
       {/* Header */}
       <header style={styles.header}>
         <div style={styles.headerInner}>
-          <img src="/logobikeservicing.png" alt="FlexBikeRental" style={{ height: 36, objectFit: 'contain' }} />
+          <img src="/logo.svg" alt="FlexBikeRental" style={{ height: 44, objectFit: 'contain' }} />
           <nav style={styles.nav}>
             {['howItWorks', 'pricing', 'location', 'faq'].map(key => (
               <button key={key} style={styles.navLink} onClick={() => scrollTo(key)}>
@@ -156,7 +156,7 @@ export default function App() {
       <footer style={styles.footer}>
         <div style={styles.footerInner}>
           <div>
-            <img src="/logobikeservicing.png" alt="FlexBikeRental" style={{ height: 36, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+            <img src="/logo.svg" alt="FlexBikeRental" style={{ height: 44, objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
             <p style={styles.footerTagline}>{t.footer.tagline}</p>
           </div>
           <div>
