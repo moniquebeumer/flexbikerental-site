@@ -25,7 +25,10 @@ export default function App() {
       {/* Header */}
       <header style={styles.header}>
         <div style={styles.headerInner}>
-          <img src="/logo.svg" alt="FlexBikeRental" style={{ height: 44, objectFit: 'contain' }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <img src="/logo.svg" alt="FlexBikeRental" style={{ height: 44, objectFit: 'contain' }} />
+            <span style={{ fontWeight: 800, fontSize: 18, color: GREEN }}>FlexBikeRental</span>
+          </div>
           <nav style={styles.nav}>
             {['howItWorks', 'pricing', 'location', 'faq'].map(key => (
               <button key={key} style={styles.navLink} onClick={() => scrollTo(key)}>
