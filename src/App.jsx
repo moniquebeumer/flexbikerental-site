@@ -51,6 +51,14 @@ export default function App() {
             </div>
             <a href={REGISTER_URL} style={styles.ctaBtn}>{t.nav.register}</a>
           </div>
+          {/* Lang switcher — only visible on mobile, always in header */}
+          <div className="site-lang-mobile">
+            {LANGS.map(l => (
+              <button key={l.code} style={{ ...styles.langBtn, ...(lang === l.code ? styles.langBtnActive : {}) }} onClick={() => setLang(l.code)}>
+                {l.label}
+              </button>
+            ))}
+          </div>
           {/* Hamburger — only visible on mobile */}
           <button className="site-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
             {menuOpen
@@ -67,13 +75,6 @@ export default function App() {
           {['howItWorks', 'pricing', 'location', 'faq'].map(key => (
             <button key={key} style={{ ...styles.navLink, textAlign: 'left', fontSize: 16, padding: '10px 4px' }} onClick={() => scrollTo(key)}>
               {t.nav[key]}
-            </button>
-          ))}
-        </div>
-        <div style={{ display: 'flex', gap: 6, marginBottom: 16, flexWrap: 'wrap' }}>
-          {LANGS.map(l => (
-            <button key={l.code} style={{ ...styles.langBtn, ...(lang === l.code ? styles.langBtnActive : {}) }} onClick={() => { setLang(l.code); setMenuOpen(false) }}>
-              {l.label}
             </button>
           ))}
         </div>
