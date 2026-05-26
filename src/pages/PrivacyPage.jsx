@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         <p style={{ color: '#6b7280', fontSize: 14, marginBottom: 40 }}>Laatst bijgewerkt: mei 2025</p>
 
         <Section title="1. Wie zijn wij?">
-          <p>FlexBikeRental is een dienst van BikeServicing, gevestigd aan Dr. Schaepmanstraat 45B, 6004 AD Weert, Nederland. Voor vragen over privacy kun je contact opnemen via <a href="mailto:info@flexbikerental.nl" style={{ color: GREEN }}>info@flexbikerental.nl</a>.</p>
+          <p>FlexBikeRental is een dienst van BikeServicing, gevestigd aan Dr. Schaepmanstraat 45B, 6004 AD Weert, Nederland. Voor vragen over privacy kun je contact opnemen via <a href="mailto:info@bikeservicing.nl" style={{ color: GREEN }}>info@bikeservicing.nl</a>.</p>
         </Section>
 
         <Section title="2. Welke gegevens verzamelen wij?">
@@ -69,7 +69,7 @@ export default function PrivacyPage() {
             <li><strong>Recht op bezwaar</strong> — u kunt bezwaar maken tegen de verwerking van uw gegevens</li>
             <li><strong>Recht op dataportabiliteit</strong> — u kunt uw gegevens in een gestructureerd formaat opvragen</li>
           </ul>
-          <p>Stuur uw verzoek naar <a href="mailto:info@flexbikerental.nl" style={{ color: GREEN }}>info@flexbikerental.nl</a>. Wij reageren binnen 30 dagen.</p>
+          <p>Stuur uw verzoek naar <a href="mailto:info@bikeservicing.nl" style={{ color: GREEN }}>info@bikeservicing.nl</a>. Wij reageren binnen 30 dagen.</p>
         </Section>
 
         <Section title="7. Beveiliging">
