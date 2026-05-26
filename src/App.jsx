@@ -32,7 +32,7 @@ export default function App() {
         <div style={styles.headerInner}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <img src="/logo.svg" alt="FlexBikeRental" style={{ height: 44, objectFit: 'contain' }} />
-            <span style={{ fontWeight: 800, fontSize: 18, color: GREEN }}>FlexBikeRental</span>
+            <span className="site-brand-name" style={{ color: GREEN }}>FlexBikeRental</span>
           </div>
           <nav className="site-nav">
             {['howItWorks', 'pricing', 'location', 'faq'].map(key => (
