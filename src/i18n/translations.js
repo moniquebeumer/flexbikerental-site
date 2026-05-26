@@ -3,7 +3,7 @@ export const translations = {
     nav: { howItWorks: 'Hoe het werkt', pricing: 'Tarieven', location: 'Locatie', faq: 'FAQ', register: 'Aanmelden' },
     hero: {
       tagline: 'De fiets voor jouw werkdag',
-      sub: 'Als flexwerker heb je een betrouwbare fiets nodig. Huur direct bij Bikeservicing — geen tussenpersoon, gewoon ophalen in Weert.',
+      sub: 'Als flexwerker heb je een betrouwbare fiets nodig. Huur direct bij FlexBikeRental — geen tussenpersoon, gewoon ophalen in Weert.',
       cta: 'Meld je aan',
       badge: 'Ophalen in Weert',
     },
@@ -51,7 +51,7 @@ export const translations = {
     nav: { howItWorks: 'How it works', pricing: 'Pricing', location: 'Location', faq: 'FAQ', register: 'Sign up' },
     hero: {
       tagline: 'The bike for your workday',
-      sub: 'As a flex worker you need a reliable bike. Rent directly from Bikeservicing — no middleman, just pick up in Weert.',
+      sub: 'As a flex worker you need a reliable bike. Rent directly from FlexBikeRental — no middleman, just pick up in Weert.',
       cta: 'Sign up now',
       badge: 'Pick up in Weert',
     },
@@ -99,7 +99,7 @@ export const translations = {
     nav: { howItWorks: 'Jak to działa', pricing: 'Cennik', location: 'Lokalizacja', faq: 'FAQ', register: 'Zarejestruj się' },
     hero: {
       tagline: 'Rower na Twój dzień pracy',
-      sub: 'Jako pracownik tymczasowy potrzebujesz niezawodnego roweru. Wynajmij bezpośrednio od Bikeservicing — bez pośredników, odbierz w Weert.',
+      sub: 'Jako pracownik tymczasowy potrzebujesz niezawodnego roweru. Wynajmij bezpośrednio od FlexBikeRental — bez pośredników, odbierz w Weert.',
       cta: 'Zarejestruj się',
       badge: 'Odbiór w Weert',
     },
@@ -147,7 +147,7 @@ export const translations = {
     nav: { howItWorks: 'Nasıl çalışır', pricing: 'Fiyatlar', location: 'Konum', faq: 'SSS', register: 'Kayıt ol' },
     hero: {
       tagline: 'İş günün için bisiklet',
-      sub: 'Esnek çalışan olarak güvenilir bir bisiklete ihtiyacın var. Doğrudan Bikeservicing\'den kirala — aracı yok, sadece Weert\'ten al götür.',
+      sub: 'Esnek çalışan olarak güvenilir bir bisiklete ihtiyacın var. Doğrudan FlexBikeRental\'den kirala — aracı yok, sadece Weert\'ten al götür.',
       cta: 'Hemen kayıt ol',
       badge: 'Weert\'ten teslim al',
     },
