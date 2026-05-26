@@ -5,7 +5,7 @@ export const translations = {
       tagline: 'De fiets voor jouw werkdag',
       sub: 'Als flexwerker heb je een betrouwbare fiets nodig. Huur direct bij FlexBikeRental — geen tussenpersoon, gewoon ophalen in Weert.',
       cta: 'Meld je aan',
-      badge: 'Ophalen in Weert',
+      badge: 'Ophalen bij jou in de buurt',
     },
     how: {
       title: 'Hoe het werkt',
@@ -25,8 +25,8 @@ export const translations = {
       ],
     },
     location: {
-      title: 'Ophalen in Weert',
-      sub: 'Onze fietsen staan klaar op onze locatie in Weert. Je kunt ze daar ophalen op werkdagen.',
+      title: 'Ophalen bij jou in de buurt',
+      sub: 'Onze fietsen staan klaar op een locatie dicht bij jou in de buurt.',
       address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
       hours: 'Ma – Vr: 08:00 – 17:00',
       note: 'Na aanmelding ontvang je het exacte adres per e-mail.',
@@ -58,7 +58,7 @@ export const translations = {
       tagline: 'The bike for your workday',
       sub: 'As a flex worker you need a reliable bike. Rent directly from FlexBikeRental — no middleman, just pick up in Weert.',
       cta: 'Sign up now',
-      badge: 'Pick up in Weert',
+      badge: 'Pick up near you',
     },
     how: {
       title: 'How it works',
@@ -78,8 +78,8 @@ export const translations = {
       ],
     },
     location: {
-      title: 'Pick up in Weert',
-      sub: 'Our bikes are ready at our location in Weert. You can pick them up on weekdays.',
+      title: 'Pick up near you',
+      sub: 'Our bikes are ready at a location near you.',
       address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
       hours: 'Mon – Fri: 08:00 – 17:00',
       note: 'After registration you will receive the exact address by email.',
@@ -111,7 +111,7 @@ export const translations = {
       tagline: 'Rower na Twój dzień pracy',
       sub: 'Jako pracownik tymczasowy potrzebujesz niezawodnego roweru. Wynajmij bezpośrednio od FlexBikeRental — bez pośredników, odbierz w Weert.',
       cta: 'Zarejestruj się',
-      badge: 'Odbiór w Weert',
+      badge: 'Odbiór w pobliżu Ciebie',
     },
     how: {
       title: 'Jak to działa',
@@ -131,8 +131,8 @@ export const translations = {
       ],
     },
     location: {
-      title: 'Odbiór w Weert',
-      sub: 'Nasze rowery czekają na Ciebie w Weert. Możesz je odebrać w dni robocze.',
+      title: 'Odbiór w pobliżu Ciebie',
+      sub: 'Nasze rowery czekają na Ciebie w lokalizacji blisko Ciebie.',
       address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
       hours: 'Pon – Pt: 08:00 – 17:00',
       note: 'Po rejestracji otrzymasz dokładny adres na e-mail.',
@@ -164,7 +164,7 @@ export const translations = {
       tagline: 'İş günün için bisiklet',
       sub: 'Esnek çalışan olarak güvenilir bir bisiklete ihtiyacın var. Doğrudan FlexBikeRental\'den kirala — aracı yok, sadece Weert\'ten al götür.',
       cta: 'Hemen kayıt ol',
-      badge: 'Weert\'ten teslim al',
+      badge: 'Sana yakın teslim al',
     },
     how: {
       title: 'Nasıl çalışır',
@@ -184,8 +184,8 @@ export const translations = {
       ],
     },
     location: {
-      title: 'Weert\'ten teslim al',
-      sub: 'Bisikletlerimiz Weert\'teki konumumuzda hazır bekliyor. Hafta içi her gün teslim alabilirsin.',
+      title: 'Sana yakın teslim al',
+      sub: 'Bisikletlerimiz sana yakın bir konumda hazır bekliyor.',
       address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
       hours: 'Pzt – Cum: 08:00 – 17:00',
       note: 'Kayıt sonrası tam adresi e-posta ile alacaksın.',
