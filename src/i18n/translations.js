@@ -35,7 +35,7 @@ export const translations = {
       title: 'Veelgestelde vragen',
       items: [
         { q: 'Moet ik een borgsom betalen?', a: 'Nee, er is geen borgsom. Wel verifiëren we je identiteit via Veriff.' },
-        { q: 'Wat gebeurt er als mijn fiets stuk gaat?', a: 'Bikeservicing regelt het onderhoud. Neem contact op en we lossen het snel op.' },
+        { q: 'Wat gebeurt er als mijn fiets stuk gaat?', a: 'Bikeservicing regelt het onderhoud. Neem contact op en we lossen het snel op.', linkLabel: 'Serviceformulier invullen →', linkUrl: 'https://bikeservicing.services' },
         { q: 'Kan ik maandelijks opzeggen?', a: 'Ja, je kunt je maandabonnement altijd per maand opzeggen.' },
         { q: 'Wat heb ik nodig om te registreren?', a: 'Een e-mailadres en een geldig identiteitsbewijs (ID-kaart of paspoort).' },
       ],
@@ -83,7 +83,7 @@ export const translations = {
       title: 'Frequently asked questions',
       items: [
         { q: 'Do I need to pay a deposit?', a: 'No, there is no deposit. We do verify your identity via Veriff.' },
-        { q: 'What happens if my bike breaks down?', a: 'Bikeservicing handles all maintenance. Contact us and we will resolve it quickly.' },
+        { q: 'What happens if my bike breaks down?', a: 'Bikeservicing handles all maintenance. Contact us and we will resolve it quickly.', linkLabel: 'Fill in service form →', linkUrl: 'https://bikeservicing.services' },
         { q: 'Can I cancel monthly?', a: 'Yes, you can cancel your monthly subscription at any time with one month\'s notice.' },
         { q: 'What do I need to register?', a: 'An email address and a valid ID (identity card or passport).' },
       ],
@@ -131,7 +131,7 @@ export const translations = {
       title: 'Często zadawane pytania',
       items: [
         { q: 'Czy muszę płacić kaucję?', a: 'Nie, nie ma kaucji. Weryfikujemy jednak Twoją tożsamość przez Veriff.' },
-        { q: 'Co się stanie, jeśli rower się zepsuje?', a: 'Bikeservicing zajmuje się wszystkimi naprawami. Skontaktuj się z nami, a szybko rozwiążemy problem.' },
+        { q: 'Co się stanie, jeśli rower się zepsuje?', a: 'Bikeservicing zajmuje się wszystkimi naprawami. Skontaktuj się z nami, a szybko rozwiążemy problem.', linkLabel: 'Wypełnij formularz serwisowy →', linkUrl: 'https://bikeservicing.services' },
         { q: 'Czy mogę zrezygnować co miesiąc?', a: 'Tak, możesz anulować miesięczną subskrypcję w każdej chwili z jednomiesięcznym wypowiedzeniem.' },
         { q: 'Co potrzebuję do rejestracji?', a: 'Adres e-mail i ważny dokument tożsamości (dowód osobisty lub paszport).' },
       ],
@@ -179,7 +179,7 @@ export const translations = {
       title: 'Sık sorulan sorular',
       items: [
         { q: 'Depozito ödemem gerekiyor mu?', a: 'Hayır, depozito yok. Ancak Veriff aracılığıyla kimliğini doğruluyoruz.' },
-        { q: 'Bisikletim bozulursa ne olur?', a: 'Bikeservicing tüm bakımları karşılar. Bize ulaş, sorunu hızlıca çözelim.' },
+        { q: 'Bisikletim bozulursa ne olur?', a: 'Bikeservicing tüm bakımları karşılar. Bize ulaş, sorunu hızlıca çözelim.', linkLabel: 'Servis formunu doldur →', linkUrl: 'https://bikeservicing.services' },
         { q: 'Her ay iptal edebilir miyim?', a: 'Evet, aylık aboneliğini istediğin zaman bir ay önceden iptal edebilirsin.' },
         { q: 'Kayıt için ne gerekiyor?', a: 'Bir e-posta adresi ve geçerli bir kimlik belgesi (nüfus cüzdanı veya pasaport).' },
       ],

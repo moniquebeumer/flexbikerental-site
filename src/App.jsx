@@ -140,7 +140,16 @@ export default function App() {
                   <span>{item.q}</span>
                   <span style={{ fontSize: 22, color: GREEN, lineHeight: 1, transform: openFaq === i ? 'rotate(45deg)' : 'none', display: 'inline-block', transition: 'transform 0.2s' }}>+</span>
                 </button>
-                {openFaq === i && <p style={styles.faqA}>{item.a}</p>}
+                {openFaq === i && (
+                  <div style={styles.faqA}>
+                    <p style={{ margin: 0 }}>{item.a}</p>
+                    {item.linkUrl && (
+                      <a href={item.linkUrl} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: 10, color: '#268546', fontWeight: 600, fontSize: 14, textDecoration: 'none' }}>
+                        {item.linkLabel}
+                      </a>
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>
