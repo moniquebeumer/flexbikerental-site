@@ -189,9 +189,9 @@ export default function App() {
 
       {/* CTA Banner */}
       <section id="aanmelden" style={styles.ctaBanner}>
-        <h2 style={styles.ctaBannerTitle}>{t.hero.tagline}</h2>
-        <p style={{ color: 'rgba(255,255,255,0.85)', marginBottom: 32, fontSize: 18, maxWidth: 560, margin: '0 auto 32px' }}>{t.hero.sub}</p>
-        <a href="mailto:info@flexbikerental.nl" style={styles.ctaBannerBtn}>{t.hero.cta} →</a>
+        <h2 style={styles.ctaBannerTitle}>{t.cta.title}</h2>
+        <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: 18, maxWidth: 560, margin: '0 auto 32px' }}>{t.cta.sub}</p>
+        <a href={REGISTER_URL} style={styles.ctaBannerBtn}>{t.cta.btn} →</a>
       </section>
 
       {/* Footer */}

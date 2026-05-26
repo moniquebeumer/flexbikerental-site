@@ -40,6 +40,11 @@ export const translations = {
         { q: 'Wat heb ik nodig om te registreren?', a: 'Een e-mailadres en een geldig identiteitsbewijs (ID-kaart of paspoort).' },
       ],
     },
+    cta: {
+      title: 'Klaar om te beginnen?',
+      sub: 'Meld je vandaag aan en haal morgen je fiets op in Weert. Geen borgsom, geen gedoe.',
+      btn: 'Aanmelden',
+    },
     footer: {
       tagline: 'Betrouwbare fietsverhuur voor flexwerkers.',
       contact: 'Contact',
@@ -87,6 +92,11 @@ export const translations = {
         { q: 'Can I cancel monthly?', a: 'Yes, you can cancel your monthly subscription at any time with one month\'s notice.' },
         { q: 'What do I need to register?', a: 'An email address and a valid ID (identity card or passport).' },
       ],
+    },
+    cta: {
+      title: 'Ready to get started?',
+      sub: 'Sign up today and pick up your bike tomorrow in Weert. No deposit, no hassle.',
+      btn: 'Sign up',
     },
     footer: {
       tagline: 'Reliable bike rental for flex workers.',
@@ -136,6 +146,11 @@ export const translations = {
         { q: 'Co potrzebuję do rejestracji?', a: 'Adres e-mail i ważny dokument tożsamości (dowód osobisty lub paszport).' },
       ],
     },
+    cta: {
+      title: 'Gotowy, by zacząć?',
+      sub: 'Zarejestruj się dziś i odbierz rower jutro w Weert. Bez kaucji, bez komplikacji.',
+      btn: 'Zarejestruj się',
+    },
     footer: {
       tagline: 'Niezawodny wynajem rowerów dla pracowników tymczasowych.',
       contact: 'Kontakt',
@@ -183,6 +198,11 @@ export const translations = {
         { q: 'Her ay iptal edebilir miyim?', a: 'Evet, aylık aboneliğini istediğin zaman bir ay önceden iptal edebilirsin.' },
         { q: 'Kayıt için ne gerekiyor?', a: 'Bir e-posta adresi ve geçerli bir kimlik belgesi (nüfus cüzdanı veya pasaport).' },
       ],
+    },
+    cta: {
+      title: 'Başlamaya hazır mısın?',
+      sub: 'Bugün kayıt ol, yarın bisikletini Weert\'ten al. Depozito yok, karmaşıklık yok.',
+      btn: 'Kayıt ol',
     },
     footer: {
       tagline: 'Esnek çalışanlar için güvenilir bisiklet kiralama.',
