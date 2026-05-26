@@ -163,7 +163,8 @@ export default function App() {
           </div>
           <div>
             <div style={styles.footerHeading}>{t.footer.contact}</div>
-            <a href="mailto:info@bikeservicing.nl" style={styles.footerLink}>info@bikeservicing.nl</a>
+            <a href="mailto:info@bikeservicing.nl" style={{ ...styles.footerLink, color: '#268546' }}>info@bikeservicing.nl</a>
+            <span style={styles.footerLink}>Bikeservicing Nederland B.V.</span>
             <span style={styles.footerLink}>De Bloemendaal 6B</span>
             <span style={styles.footerLink}>5221 EC 's-Hertogenbosch</span>
           </div>
