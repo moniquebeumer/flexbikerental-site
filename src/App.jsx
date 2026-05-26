@@ -17,10 +17,12 @@ export default function App() {
 
   const [lang, setLang] = useState('nl')
   const [openFaq, setOpenFaq] = useState(null)
+  const [menuOpen, setMenuOpen] = useState(false)
   const t = translations[lang]
 
   function scrollTo(id) {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    setMenuOpen(false)
   }
 
   return (
@@ -32,14 +34,14 @@ export default function App() {
             <img src="/logo.svg" alt="FlexBikeRental" style={{ height: 44, objectFit: 'contain' }} />
             <span style={{ fontWeight: 800, fontSize: 18, color: GREEN }}>FlexBikeRental</span>
           </div>
-          <nav style={styles.nav}>
+          <nav className="site-nav">
             {['howItWorks', 'pricing', 'location', 'faq'].map(key => (
               <button key={key} style={styles.navLink} onClick={() => scrollTo(key)}>
                 {t.nav[key]}
               </button>
             ))}
           </nav>
-          <div style={styles.headerRight}>
+          <div className="site-header-right">
             <div style={styles.langSwitcher}>
               {LANGS.map(l => (
                 <button key={l.code} style={{ ...styles.langBtn, ...(lang === l.code ? styles.langBtnActive : {}) }} onClick={() => setLang(l.code)}>
@@ -49,8 +51,36 @@ export default function App() {
             </div>
             <a href={REGISTER_URL} style={styles.ctaBtn}>{t.nav.register}</a>
           </div>
+          {/* Hamburger — only visible on mobile */}
+          <button className="site-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+            {menuOpen
+              ? <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              : <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            }
+          </button>
         </div>
       </header>
+
+      {/* Mobile menu */}
+      <div className={`site-mobile-menu${menuOpen ? '' : ' closed'}`}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 16 }}>
+          {['howItWorks', 'pricing', 'location', 'faq'].map(key => (
+            <button key={key} style={{ ...styles.navLink, textAlign: 'left', fontSize: 16, padding: '10px 4px' }} onClick={() => scrollTo(key)}>
+              {t.nav[key]}
+            </button>
+          ))}
+        </div>
+        <div style={{ display: 'flex', gap: 6, marginBottom: 16, flexWrap: 'wrap' }}>
+          {LANGS.map(l => (
+            <button key={l.code} style={{ ...styles.langBtn, ...(lang === l.code ? styles.langBtnActive : {}) }} onClick={() => { setLang(l.code); setMenuOpen(false) }}>
+              {l.label}
+            </button>
+          ))}
+        </div>
+        <a href={REGISTER_URL} style={{ ...styles.ctaBtn, display: 'block', textAlign: 'center' }} onClick={() => setMenuOpen(false)}>
+          {t.nav.register} →
+        </a>
+      </div>
 
       {/* Hero */}
       <section style={styles.hero}>
