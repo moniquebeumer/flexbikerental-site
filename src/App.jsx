@@ -163,8 +163,9 @@ export default function App() {
           </div>
           <div>
             <div style={styles.footerHeading}>{t.footer.contact}</div>
-            <a href="mailto:info@flexbikerental.nl" style={styles.footerLink}>info@flexbikerental.nl</a>
-            <a href="https://www.flexbikerental.nl" style={styles.footerLink}>flexbikerental.nl</a>
+            <a href="mailto:info@bikeservicing.nl" style={styles.footerLink}>info@bikeservicing.nl</a>
+            <span style={styles.footerLink}>De Bloemendaal 6B</span>
+            <span style={styles.footerLink}>5221 EC 's-Hertogenbosch</span>
           </div>
           <div>
             <div style={styles.footerHeading}>Taal / Language</div>
