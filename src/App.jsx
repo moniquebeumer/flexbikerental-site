@@ -113,10 +113,6 @@ export default function App() {
                 <span style={styles.locationIcon}>🕐</span>
                 <span>{t.location.hours}</span>
               </div>
-              <div style={{ ...styles.locationRow, marginTop: 8, padding: '12px 16px', background: '#fef9c3', borderRadius: 8, fontSize: 14, color: '#854d0e' }}>
-                <span style={styles.locationIcon}>ℹ️</span>
-                <span>{t.location.note}</span>
-              </div>
             </div>
             <div style={styles.mapPlaceholder}>
               <iframe
