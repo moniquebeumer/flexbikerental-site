@@ -218,11 +218,14 @@ export default function App() {
               </button>
             ))}
           </div>
+          <div>
+            <div style={styles.footerHeading}>Juridisch</div>
+            <a href="/privacy" style={styles.footerLink}>Privacyverklaring</a>
+            <a href="/terms" style={styles.footerLink}>Algemene Voorwaarden</a>
+          </div>
         </div>
-        <div style={{ ...styles.footerBottom, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+        <div style={{ ...styles.footerBottom }}>
           <span>{t.footer.rights}</span>
-          <a href="/privacy" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: 13 }}>Privacyverklaring</a>
-          <a href="/terms" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: 13 }}>Algemene Voorwaarden</a>
         </div>
       </footer>
     </div>
