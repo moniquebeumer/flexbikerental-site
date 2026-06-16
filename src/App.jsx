@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { translations } from './i18n/translations'
 import PrivacyPage from './pages/PrivacyPage'
+import TermsPage from './pages/TermsPage'
 import './index.css'
 
 const LANGS = [
@@ -14,6 +15,7 @@ const REGISTER_URL = 'https://app.flexbikerental.nl'
 
 export default function App() {
   if (window.location.pathname === '/privacy') return <PrivacyPage />
+  if (window.location.pathname === '/terms') return <TermsPage />
 
   const [lang, setLang] = useState('nl')
   const [openFaq, setOpenFaq] = useState(null)
@@ -220,6 +222,7 @@ export default function App() {
         <div style={{ ...styles.footerBottom, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
           <span>{t.footer.rights}</span>
           <a href="/privacy" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: 13 }}>Privacyverklaring</a>
+          <a href="/terms" style={{ color: '#9ca3af', textDecoration: 'none', fontSize: 13 }}>Algemene Voorwaarden</a>
         </div>
       </footer>
     </div>
