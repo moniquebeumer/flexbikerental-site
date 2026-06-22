@@ -3,7 +3,7 @@ export const translations = {
     nav: { howItWorks: 'Hoe het werkt', pricing: 'Tarieven', location: 'Locatie', faq: 'FAQ', register: 'Aanmelden' },
     hero: {
       tagline: 'De fiets voor jouw werkdag',
-      sub: 'Als flexwerker heb je een betrouwbare fiets nodig. Huur direct bij FlexBikeRental — geen tussenpersoon, gewoon ophalen in Weert.',
+      sub: 'Als flexwerker heb je een betrouwbare fiets nodig. Huur direct bij FlexBikeRental — geen tussenpersoon, gewoon ophalen op een locatie bij jou in de buurt.',
       cta: 'Meld je aan',
       badge: 'Ophalen bij jou in de buurt',
     },
@@ -27,7 +27,10 @@ export const translations = {
     location: {
       title: 'Ophalen bij jou in de buurt',
       sub: 'Onze fietsen staan klaar op een locatie dicht bij jou in de buurt.',
-      address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
+      addresses: [
+        "Bikeservicing Nederland B.V. — De Bloemendaal 6B, 5221 EC 's-Hertogenbosch",
+        'Dr. Schaepmanstraat 45B, 6004 AD Weert',
+      ],
       hours: 'Ma – Vr: 08:00 – 17:00',
       note: 'Na aanmelding ontvang je het exacte adres per e-mail.',
     },
@@ -56,7 +59,7 @@ export const translations = {
     nav: { howItWorks: 'How it works', pricing: 'Pricing', location: 'Location', faq: 'FAQ', register: 'Sign up' },
     hero: {
       tagline: 'The bike for your workday',
-      sub: 'As a flex worker you need a reliable bike. Rent directly from FlexBikeRental — no middleman, just pick up in Weert.',
+      sub: 'As a flex worker you need a reliable bike. Rent directly from FlexBikeRental — no middleman, just pick up at a location near you.',
       cta: 'Sign up now',
       badge: 'Pick up near you',
     },
@@ -80,7 +83,10 @@ export const translations = {
     location: {
       title: 'Pick up near you',
       sub: 'Our bikes are ready at a location near you.',
-      address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
+      addresses: [
+        "Bikeservicing Nederland B.V. — De Bloemendaal 6B, 5221 EC 's-Hertogenbosch",
+        'Dr. Schaepmanstraat 45B, 6004 AD Weert',
+      ],
       hours: 'Mon – Fri: 08:00 – 17:00',
       note: 'After registration you will receive the exact address by email.',
     },
@@ -109,7 +115,7 @@ export const translations = {
     nav: { howItWorks: 'Jak to działa', pricing: 'Cennik', location: 'Lokalizacja', faq: 'FAQ', register: 'Zarejestruj się' },
     hero: {
       tagline: 'Rower na Twój dzień pracy',
-      sub: 'Jako pracownik tymczasowy potrzebujesz niezawodnego roweru. Wynajmij bezpośrednio od FlexBikeRental — bez pośredników, odbierz w Weert.',
+      sub: 'Jako pracownik tymczasowy potrzebujesz niezawodnego roweru. Wynajmij bezpośrednio od FlexBikeRental — bez pośredników, odbierz w lokalizacji blisko Ciebie.',
       cta: 'Zarejestruj się',
       badge: 'Odbiór w pobliżu Ciebie',
     },
@@ -133,7 +139,10 @@ export const translations = {
     location: {
       title: 'Odbiór w pobliżu Ciebie',
       sub: 'Nasze rowery czekają na Ciebie w lokalizacji blisko Ciebie.',
-      address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
+      addresses: [
+        "Bikeservicing Nederland B.V. — De Bloemendaal 6B, 5221 EC 's-Hertogenbosch",
+        'Dr. Schaepmanstraat 45B, 6004 AD Weert',
+      ],
       hours: 'Pon – Pt: 08:00 – 17:00',
       note: 'Po rejestracji otrzymasz dokładny adres na e-mail.',
     },
@@ -162,7 +171,7 @@ export const translations = {
     nav: { howItWorks: 'Nasıl çalışır', pricing: 'Fiyatlar', location: 'Konum', faq: 'SSS', register: 'Kayıt ol' },
     hero: {
       tagline: 'İş günün için bisiklet',
-      sub: 'Esnek çalışan olarak güvenilir bir bisiklete ihtiyacın var. Doğrudan FlexBikeRental\'den kirala — aracı yok, sadece Weert\'ten al götür.',
+      sub: 'Esnek çalışan olarak güvenilir bir bisiklete ihtiyacın var. Doğrudan FlexBikeRental\'den kirala — aracı yok, sana yakın bir konumdan teslim al.',
       cta: 'Hemen kayıt ol',
       badge: 'Sana yakın teslim al',
     },
@@ -186,7 +195,10 @@ export const translations = {
     location: {
       title: 'Sana yakın teslim al',
       sub: 'Bisikletlerimiz sana yakın bir konumda hazır bekliyor.',
-      address: 'Dr. Schaepmanstraat 45B, 6004 AD Weert',
+      addresses: [
+        "Bikeservicing Nederland B.V. — De Bloemendaal 6B, 5221 EC 's-Hertogenbosch",
+        'Dr. Schaepmanstraat 45B, 6004 AD Weert',
+      ],
       hours: 'Pzt – Cum: 08:00 – 17:00',
       note: 'Kayıt sonrası tam adresi e-posta ile alacaksın.',
     },

@@ -138,10 +138,12 @@ export default function App() {
           <p style={styles.sectionSub}>{t.location.sub}</p>
           <div style={styles.locationCard}>
             <div style={styles.locationInfo}>
-              <div style={styles.locationRow}>
-                <span style={styles.locationIcon}>📍</span>
-                <span>{t.location.address}</span>
-              </div>
+              {t.location.addresses.map((address, i) => (
+                <div key={i} style={styles.locationRow}>
+                  <span style={styles.locationIcon}>📍</span>
+                  <span>{address}</span>
+                </div>
+              ))}
               <div style={styles.locationRow}>
                 <span style={styles.locationIcon}>🕐</span>
                 <span>{t.location.hours}</span>
