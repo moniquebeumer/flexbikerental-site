@@ -20,7 +20,7 @@ export const translations = {
       sub: 'Alle tarieven zijn inclusief BTW. Geen verborgen kosten.',
       plans: [
         { period: '1 week', price: '€ 35,00', note: 'Flexibel voor de kortere termijn' },
-        { period: '1 maand', price: '€ 127,05', note: 'Meest gekozen door flexwerkers', popular: true },
+        { period: '1 maand', price: '€ 127,00', note: 'Meest gekozen door flexwerkers', popular: true },
       ],
     },
     location: {
@@ -75,7 +75,7 @@ export const translations = {
       sub: 'All prices include VAT. No hidden fees.',
       plans: [
         { period: '1 week', price: '€ 35.00', note: 'Flexible for the short term' },
-        { period: '1 month', price: '€ 127.05', note: 'Most chosen by flex workers', popular: true },
+        { period: '1 month', price: '€ 127.00', note: 'Most chosen by flex workers', popular: true },
       ],
     },
     location: {
@@ -130,7 +130,7 @@ export const translations = {
       sub: 'Wszystkie ceny zawierają VAT. Brak ukrytych opłat.',
       plans: [
         { period: '1 tydzień', price: '€ 35,00', note: 'Elastyczne na krótki termin' },
-        { period: '1 miesiąc', price: '€ 127,05', note: 'Najczęściej wybierane przez pracowników', popular: true },
+        { period: '1 miesiąc', price: '€ 127,00', note: 'Najczęściej wybierane przez pracowników', popular: true },
       ],
     },
     location: {
@@ -185,7 +185,7 @@ export const translations = {
       sub: 'Tüm fiyatlara KDV dahildir. Gizli ücret yoktur.',
       plans: [
         { period: '1 hafta', price: '€ 35,00', note: 'Kısa vadeli esneklik' },
-        { period: '1 ay', price: '€ 127,05', note: 'Esnek çalışanların en çok tercihi', popular: true },
+        { period: '1 ay', price: '€ 127,00', note: 'Esnek çalışanların en çok tercihi', popular: true },
       ],
     },
     location: {
