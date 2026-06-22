@@ -12,7 +12,7 @@ export const translations = {
       steps: [
         { icon: '📋', title: 'Registreer', text: 'Maak een account aan met je e-mailadres en vul je gegevens in.' },
         { icon: '🪪', title: 'Verifieer je identiteit', text: 'Upload je ID of paspoort via onze beveiligde verificatie. Dit duurt minder dan 2 minuten.' },
-        { icon: '🚲', title: 'Haal je fiets op', text: 'Kom je fiets ophalen op onze locatie in Weert en rij direct weg.' },
+        { icon: '🚲', title: 'Haal je fiets op', text: 'Kom je fiets ophalen op een locatie naar keuze en rij direct weg.' },
       ],
     },
     pricing: {
@@ -68,7 +68,7 @@ export const translations = {
       steps: [
         { icon: '📋', title: 'Register', text: 'Create an account with your email address and fill in your details.' },
         { icon: '🪪', title: 'Verify your identity', text: 'Upload your ID or passport via our secure verification. Takes less than 2 minutes.' },
-        { icon: '🚲', title: 'Pick up your bike', text: 'Come pick up your bike at our location in Weert and ride away immediately.' },
+        { icon: '🚲', title: 'Pick up your bike', text: 'Come pick up your bike at a location of your choice and ride away immediately.' },
       ],
     },
     pricing: {
@@ -124,7 +124,7 @@ export const translations = {
       steps: [
         { icon: '📋', title: 'Zarejestruj się', text: 'Utwórz konto podając swój adres e-mail i uzupełnij swoje dane.' },
         { icon: '🪪', title: 'Zweryfikuj tożsamość', text: 'Prześlij swój dowód osobisty lub paszport przez nasz bezpieczny system weryfikacji. Zajmuje to mniej niż 2 minuty.' },
-        { icon: '🚲', title: 'Odbierz rower', text: 'Przyjedź po rower do naszej lokalizacji w Weert i od razu jedź.' },
+        { icon: '🚲', title: 'Odbierz rower', text: 'Przyjedź po rower do wybranej lokalizacji i od razu jedź.' },
       ],
     },
     pricing: {
@@ -180,7 +180,7 @@ export const translations = {
       steps: [
         { icon: '📋', title: 'Kayıt ol', text: 'E-posta adresinle hesap oluştur ve bilgilerini doldur.' },
         { icon: '🪪', title: 'Kimliğini doğrula', text: 'Güvenli doğrulama sistemimiz üzerinden kimlik kartı veya pasaportunun fotoğrafını yükle. 2 dakikadan az sürer.' },
-        { icon: '🚲', title: 'Bisikletini al', text: 'Weert\'teki konumumuzdan bisikletini al ve hemen yola çık.' },
+        { icon: '🚲', title: 'Bisikletini al', text: 'Seçtiğin konumdan bisikletini al ve hemen yola çık.' },
       ],
     },
     pricing: {
