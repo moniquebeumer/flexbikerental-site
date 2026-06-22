@@ -20,6 +20,7 @@ export default function App() {
   const [lang, setLang] = useState('nl')
   const [openFaq, setOpenFaq] = useState(null)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [selectedLocation, setSelectedLocation] = useState(0)
   const t = translations[lang]
 
   function scrollTo(id) {
@@ -139,10 +140,14 @@ export default function App() {
           <div style={styles.locationCard}>
             <div style={styles.locationInfo}>
               {t.location.addresses.map((address, i) => (
-                <div key={i} style={styles.locationRow}>
+                <button
+                  key={i}
+                  onClick={() => setSelectedLocation(i)}
+                  style={{ ...styles.locationRow, ...styles.locationRowBtn, ...(selectedLocation === i ? styles.locationRowActive : {}) }}
+                >
                   <span style={styles.locationIcon}>📍</span>
                   <span>{address}</span>
-                </div>
+                </button>
               ))}
               <div style={styles.locationRow}>
                 <span style={styles.locationIcon}>🕐</span>
@@ -151,8 +156,8 @@ export default function App() {
             </div>
             <div style={styles.mapPlaceholder}>
               <iframe
-                title="Weert locatie"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2487.5!2d5.7089!3d51.2521!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zRHIuIFNjaGFlcG1hbnN0cmFhdCA0NUIsIFdlZXJ0!5e0!3m2!1snl!2snl!4v1"
+                title={t.location.addresses[selectedLocation]}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(t.location.addresses[selectedLocation])}&output=embed`}
                 width="100%"
                 height="260"
                 style={{ border: 0, borderRadius: 12 }}
@@ -275,6 +280,8 @@ const styles = {
   locationCard: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 40, marginTop: 40 },
   locationInfo: { display: 'flex', flexDirection: 'column', gap: 16, justifyContent: 'center' },
   locationRow: { display: 'flex', gap: 12, alignItems: 'flex-start', fontSize: 16 },
+  locationRowBtn: { background: 'none', border: 'none', textAlign: 'left', padding: '8px 10px', borderRadius: 10, cursor: 'pointer', color: '#374151', width: '100%' },
+  locationRowActive: { background: '#f0fdf4', color: GREEN, fontWeight: 700 },
   locationIcon: { fontSize: 22, flexShrink: 0, marginTop: 1 },
   mapPlaceholder: { borderRadius: 12, overflow: 'hidden', border: '1px solid #e5e7eb', minHeight: 260 },
   faqList: { marginTop: 40, border: '1px solid #e5e7eb', borderRadius: 12, overflow: 'hidden', background: '#fff' },
