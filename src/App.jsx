@@ -12,6 +12,8 @@ const LANGS = [
 ]
 
 const REGISTER_URL = 'https://app.flexbikerental.nl'
+// ?login opent meteen het inlogscherm in plaats van de aanmeldstappen
+const LOGIN_URL = 'https://app.flexbikerental.nl/?login'
 
 export default function App() {
   if (window.location.pathname === '/privacy') return <PrivacyPage />
@@ -52,6 +54,7 @@ export default function App() {
                 </button>
               ))}
             </div>
+            <a href={LOGIN_URL} style={styles.loginLink}>{t.nav.login}</a>
             <a href={REGISTER_URL} style={styles.ctaBtn}>{t.nav.register}</a>
           </div>
           {/* Lang switcher — only visible on mobile, always in header */}
@@ -83,6 +86,9 @@ export default function App() {
         </div>
         <a href={REGISTER_URL} style={{ ...styles.ctaBtn, display: 'block', textAlign: 'center' }} onClick={() => setMenuOpen(false)}>
           {t.nav.register} →
+        </a>
+        <a href={LOGIN_URL} style={{ ...styles.loginLink, display: 'block', textAlign: 'center', marginTop: 10 }} onClick={() => setMenuOpen(false)}>
+          {t.nav.login} →
         </a>
       </div>
 
@@ -248,6 +254,7 @@ const styles = {
   logo: { fontSize: 18, fontWeight: 800, color: GREEN, whiteSpace: 'nowrap' },
   nav: { display: 'flex', gap: 2, flex: 1, justifyContent: 'center', flexWrap: 'wrap' },
   navLink: { background: 'none', border: 'none', color: '#6b7280', fontSize: 14, fontWeight: 500, cursor: 'pointer', padding: '6px 10px', borderRadius: 6 },
+  loginLink: { color: '#268546', fontSize: 14, fontWeight: 600, textDecoration: 'none', padding: '9px 14px', borderRadius: 8, border: '1.5px solid #268546', whiteSpace: 'nowrap' },
   headerRight: { display: 'flex', alignItems: 'center', gap: 10, flexShrink: 0 },
   langSwitcher: { display: 'flex', gap: 3 },
   langBtn: { background: '#f3f4f6', border: '1px solid #e5e7eb', borderRadius: 6, color: '#374151', cursor: 'pointer', fontSize: 12, fontWeight: 600, padding: '4px 8px' },

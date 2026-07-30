@@ -1,6 +1,6 @@
 export const translations = {
   nl: {
-    nav: { howItWorks: 'Hoe het werkt', pricing: 'Tarieven', location: 'Locatie', faq: 'FAQ', register: 'Aanmelden' },
+    nav: { howItWorks: 'Hoe het werkt', pricing: 'Tarieven', location: 'Locatie', faq: 'FAQ', register: 'Aanmelden', login: 'Inloggen' },
     hero: {
       tagline: 'De fiets voor jouw werkdag',
       sub: 'Als flexwerker heb je een betrouwbare fiets nodig. Huur direct bij FlexBikeRental — geen tussenpersoon, gewoon ophalen op een locatie bij jou in de buurt.',
@@ -19,8 +19,8 @@ export const translations = {
       title: 'Tarieven',
       sub: 'Alle tarieven zijn inclusief BTW. Geen verborgen kosten.',
       plans: [
-        { period: '1 week', price: '€ 35,00', note: 'Flexibel voor de kortere termijn' },
-        { period: '1 maand', price: '€ 127,00', note: 'Meest gekozen door flexwerkers', popular: true },
+        { period: '1 week', price: '€ 31,00', note: 'Flexibel voor de kortere termijn' },
+        { period: '1 maand', price: '€ 124,00', note: 'Meest gekozen door flexwerkers', popular: true },
       ],
     },
     location: {
@@ -37,7 +37,7 @@ export const translations = {
       title: 'Veelgestelde vragen',
       items: [
         { q: 'Moet ik een borgsom betalen?', a: 'Nee, er is geen borgsom. Wel verifiëren we je identiteit via Veriff.' },
-        { q: 'Wat gebeurt er als mijn fiets stuk gaat?', a: 'Bikeservicing regelt het onderhoud. Neem contact op en we lossen het snel op.', linkLabel: 'Serviceformulier invullen →', linkUrl: 'https://bikeservicing.services' },
+        { q: 'Wat gebeurt er als mijn fiets stuk gaat?', a: 'Meld het in je account: bij je fiets staat een knop om service aan te vragen, en je kunt er een foto bij doen. Je gegevens en je framenummer sturen we automatisch mee. Bikeservicing pakt het op en de stand van zaken zie je in je account terug.', linkLabel: 'Naar mijn account →', linkUrl: 'https://app.flexbikerental.nl/?login' },
         { q: 'Ik wil mijn fiets langer houden, kan ik verlengen?', a: 'Ja, in je account kan je de gekozen periode verlengen.' },
         { q: 'Wat heb ik nodig om te registreren?', a: 'Een e-mailadres en een geldig identiteitsbewijs (ID-kaart of paspoort).' },
       ],
@@ -55,7 +55,7 @@ export const translations = {
   },
 
   en: {
-    nav: { howItWorks: 'How it works', pricing: 'Pricing', location: 'Location', faq: 'FAQ', register: 'Sign up' },
+    nav: { howItWorks: 'How it works', pricing: 'Pricing', location: 'Location', faq: 'FAQ', register: 'Sign up', login: 'Sign in' },
     hero: {
       tagline: 'The bike for your workday',
       sub: 'As a flex worker you need a reliable bike. Rent directly from FlexBikeRental — no middleman, just pick up at a location near you.',
@@ -74,8 +74,8 @@ export const translations = {
       title: 'Pricing',
       sub: 'All prices include VAT. No hidden fees.',
       plans: [
-        { period: '1 week', price: '€ 35.00', note: 'Flexible for the short term' },
-        { period: '1 month', price: '€ 127.00', note: 'Most chosen by flex workers', popular: true },
+        { period: '1 week', price: '€ 31.00', note: 'Flexible for the short term' },
+        { period: '1 month', price: '€ 124.00', note: 'Most chosen by flex workers', popular: true },
       ],
     },
     location: {
@@ -92,7 +92,7 @@ export const translations = {
       title: 'Frequently asked questions',
       items: [
         { q: 'Do I need to pay a deposit?', a: 'No, there is no deposit. We do verify your identity via Veriff.' },
-        { q: 'What happens if my bike breaks down?', a: 'Bikeservicing handles all maintenance. Contact us and we will resolve it quickly.', linkLabel: 'Fill in service form →', linkUrl: 'https://bikeservicing.services' },
+        { q: 'What happens if my bike breaks down?', a: 'Report it in your account: there is a button next to your bike to request service, and you can add a photo. Your details and frame number are sent along automatically. Bikeservicing picks it up and you can follow the progress in your account.', linkLabel: 'Go to my account →', linkUrl: 'https://app.flexbikerental.nl/?login' },
         { q: 'I want to keep my bike longer, can I extend?', a: 'Yes, in your account you can extend the chosen period.' },
         { q: 'What do I need to register?', a: 'An email address and a valid ID (identity card or passport).' },
       ],
@@ -110,7 +110,7 @@ export const translations = {
   },
 
   pl: {
-    nav: { howItWorks: 'Jak to działa', pricing: 'Cennik', location: 'Lokalizacja', faq: 'FAQ', register: 'Zarejestruj się' },
+    nav: { howItWorks: 'Jak to działa', pricing: 'Cennik', location: 'Lokalizacja', faq: 'FAQ', register: 'Zarejestruj się', login: 'Zaloguj się' },
     hero: {
       tagline: 'Rower na Twój dzień pracy',
       sub: 'Jako pracownik tymczasowy potrzebujesz niezawodnego roweru. Wynajmij bezpośrednio od FlexBikeRental — bez pośredników, odbierz w lokalizacji blisko Ciebie.',
@@ -129,8 +129,8 @@ export const translations = {
       title: 'Cennik',
       sub: 'Wszystkie ceny zawierają VAT. Brak ukrytych opłat.',
       plans: [
-        { period: '1 tydzień', price: '€ 35,00', note: 'Elastyczne na krótki termin' },
-        { period: '1 miesiąc', price: '€ 127,00', note: 'Najczęściej wybierane przez pracowników', popular: true },
+        { period: '1 tydzień', price: '€ 31,00', note: 'Elastyczne na krótki termin' },
+        { period: '1 miesiąc', price: '€ 124,00', note: 'Najczęściej wybierane przez pracowników', popular: true },
       ],
     },
     location: {
@@ -147,7 +147,7 @@ export const translations = {
       title: 'Często zadawane pytania',
       items: [
         { q: 'Czy muszę płacić kaucję?', a: 'Nie, nie ma kaucji. Weryfikujemy jednak Twoją tożsamość przez Veriff.' },
-        { q: 'Co się stanie, jeśli rower się zepsuje?', a: 'Bikeservicing zajmuje się wszystkimi naprawami. Skontaktuj się z nami, a szybko rozwiążemy problem.', linkLabel: 'Wypełnij formularz serwisowy →', linkUrl: 'https://bikeservicing.services' },
+        { q: 'Co się stanie, jeśli rower się zepsuje?', a: 'Zgłoś to na swoim koncie: przy rowerze znajdziesz przycisk do zgłoszenia serwisu i możesz dodać zdjęcie. Twoje dane i numer ramy wysyłamy automatycznie. Bikeservicing zajmie się sprawą, a status zobaczysz na swoim koncie.', linkLabel: 'Przejdź do mojego konta →', linkUrl: 'https://app.flexbikerental.nl/?login' },
         { q: 'Chcę zatrzymać rower dłużej, czy mogę przedłużyć?', a: 'Tak, na swoim koncie możesz przedłużyć wybrany okres.' },
         { q: 'Co potrzebuję do rejestracji?', a: 'Adres e-mail i ważny dokument tożsamości (dowód osobisty lub paszport).' },
       ],
@@ -165,7 +165,7 @@ export const translations = {
   },
 
   tr: {
-    nav: { howItWorks: 'Nasıl çalışır', pricing: 'Fiyatlar', location: 'Konum', faq: 'SSS', register: 'Kayıt ol' },
+    nav: { howItWorks: 'Nasıl çalışır', pricing: 'Fiyatlar', location: 'Konum', faq: 'SSS', register: 'Kayıt ol', login: 'Giriş yap' },
     hero: {
       tagline: 'İş günün için bisiklet',
       sub: 'Esnek çalışan olarak güvenilir bir bisiklete ihtiyacın var. Doğrudan FlexBikeRental\'den kirala — aracı yok, sana yakın bir konumdan teslim al.',
@@ -184,8 +184,8 @@ export const translations = {
       title: 'Fiyatlar',
       sub: 'Tüm fiyatlara KDV dahildir. Gizli ücret yoktur.',
       plans: [
-        { period: '1 hafta', price: '€ 35,00', note: 'Kısa vadeli esneklik' },
-        { period: '1 ay', price: '€ 127,00', note: 'Esnek çalışanların en çok tercihi', popular: true },
+        { period: '1 hafta', price: '€ 31,00', note: 'Kısa vadeli esneklik' },
+        { period: '1 ay', price: '€ 124,00', note: 'Esnek çalışanların en çok tercihi', popular: true },
       ],
     },
     location: {
@@ -202,7 +202,7 @@ export const translations = {
       title: 'Sık sorulan sorular',
       items: [
         { q: 'Depozito ödemem gerekiyor mu?', a: 'Hayır, depozito yok. Ancak Veriff aracılığıyla kimliğini doğruluyoruz.' },
-        { q: 'Bisikletim bozulursa ne olur?', a: 'Bikeservicing tüm bakımları karşılar. Bize ulaş, sorunu hızlıca çözelim.', linkLabel: 'Servis formunu doldur →', linkUrl: 'https://bikeservicing.services' },
+        { q: 'Bisikletim bozulursa ne olur?', a: 'Hesabınızdan bildirin: bisikletinizin yanında servis talebi düğmesi var ve fotoğraf ekleyebilirsiniz. Bilgileriniz ve kadro numaranız otomatik olarak gönderilir. Bikeservicing işi üstlenir ve durumu hesabınızda görebilirsiniz.', linkLabel: 'Hesabıma git →', linkUrl: 'https://app.flexbikerental.nl/?login' },
         { q: 'Bisikletimi daha uzun süre tutmak istiyorum, uzatabilir miyim?', a: 'Evet, hesabından seçtiğin süreyi uzatabilirsin.' },
         { q: 'Kayıt için ne gerekiyor?', a: 'Bir e-posta adresi ve geçerli bir kimlik belgesi (nüfus cüzdanı veya pasaport).' },
       ],
