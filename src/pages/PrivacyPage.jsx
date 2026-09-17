@@ -35,7 +35,7 @@ export default function PrivacyPage() {
           <p>Wij verwerken uw gegevens voor de volgende doeleinden:</p>
           <ul>
             <li><strong>Uitvoering van de huurovereenkomst</strong> — om de fiets te kunnen verhuren en het contract te beheren</li>
-            <li><strong>Wettelijke identificatieplicht</strong> — wij zijn verplicht uw identiteit te verifiëren voordat wij een fiets verhuren</li>
+            <li><strong>Identiteitscontrole</strong> — om onze fietsen te beschermen tegen diefstal en fraude controleren wij uw identiteit (gerechtvaardigd belang); u kiest zelf of dat online via Veriff of op locatie gebeurt</li>
             <li><strong>Betaling verwerken</strong> — via onze betaaldienstverlener Mollie</li>
             <li><strong>Communicatie</strong> — bevestigingen, ophaalinstructies en statusupdates per e-mail</li>
           </ul>
