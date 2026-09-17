@@ -46,7 +46,7 @@ export default function PrivacyPage() {
           <ul>
             <li>Huurcontracten en bijbehorende gegevens: <strong>7 jaar</strong> (wettelijke bewaarplicht voor financiële administratie)</li>
             <li>Accountgegevens: tot <strong>2 jaar na de laatste activiteit</strong>, tenzij u eerder verzoekt om verwijdering</li>
-            <li>Identiteitsverificatiegegevens: verwerkt door Veriff conform hun eigen bewaarbeleid (max. 30 dagen na verificatie)</li>
+            <li>Identiteitsverificatiegegevens: verwerkt door Veriff conform hun eigen bewaarbeleid (90 dagen na verificatie)</li>
           </ul>
         </Section>
 
